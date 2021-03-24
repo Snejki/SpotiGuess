@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react'
 import { getData } from '../../services/http/spotify-service';
+import { connect } from 'react-redux'
+import { loginUser } from '../../redux/auth/auth.actions';
 
+const mapDispatchToProps = (dispatch) => ({
+    loginUser: (user) => dispatch(loginUser(user))
+});
 
+const mapStateToProps = (state) => ({
 
-const RedirectContainer = ({ location }) => {
+})
+
+const RedirectContainer = ({ location, loginUser }) => {
 
 
 
@@ -44,7 +52,8 @@ const RedirectContainer = ({ location }) => {
     let params  = new URLSearchParams(location.hash.slice(1));
     const token = params.get('access_token');
     getData('', 'BQDG9InNTsXzD4NrKNFcbqrQXbZrRCaVywcV84m-QpQVtqAanJELPsbXoxoPX3Ty03_asaddcYog5Vsnz0ObdxbdhU0-na6VyPdHX9PPaUjkH3Bybb2dieT1EMF_FQUXDXgE1lJNO6ain1VBppCqZA7zhyZKzHPUKj3B49ud-nHCDLQf3byJco8');
-
+    loginUser({token: 'aaaaaaa', validTill: '12'});
+    console.log('xd');
    }, []);
 
     return (
@@ -54,4 +63,4 @@ const RedirectContainer = ({ location }) => {
     )
 }
 
-export default RedirectContainer
+export default connect(null, mapDispatchToProps)(RedirectContainer);
