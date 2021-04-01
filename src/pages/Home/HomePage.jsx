@@ -1,15 +1,17 @@
-import React from 'react'
-import { authorize } from '../../services/http/spotify-service';
+import React, { useState } from "react";
+import PlayerComponent from "../../components/Player/PlayerComponent";
+import Search from "../../components/Search/search.component";
+import SpotifyService from "../../services/http/SpotifyService";
 
 const HomePage = () => {
-    return (
-        <div>
-            <button
-                onClick={authorize}>
-                LOGIN TO SPOTIFYYYYYY
-            </button>
-        </div>
-    )
-}
+  const [searchData, setSearchData] = useState([]);
 
-export default HomePage
+  return (
+    <div style={{ width: 100 + "%" }}>
+      <button onClick={SpotifyService.authorize}>LOGIN</button>
+      <Search setSearchData={setSearchData} searchData={searchData} />
+    </div>
+  );
+};
+
+export default HomePage;

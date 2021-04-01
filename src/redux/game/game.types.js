@@ -1,0 +1,5 @@
+export const GameTypes = {
+  INIT_GAME: "INIT_GAME",
+  ANSWER_QUESTION: "ANSWER_QUESTION",
+  NEXT_QUESTION: "NEXT_QUESTION",
+};

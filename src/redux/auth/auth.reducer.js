@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 const AuthReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AuthTypes.LOGIN_SUCESS:
-      console.log("FIRED");
       return {
         ...state,
         token: action.payload.token,
